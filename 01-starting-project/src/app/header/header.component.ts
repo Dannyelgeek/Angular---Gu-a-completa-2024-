@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+/* El decorador '@Component' es importado del paquete '@angular/core' de Angular */
 
 @Component({
   selector: 'app-header',
