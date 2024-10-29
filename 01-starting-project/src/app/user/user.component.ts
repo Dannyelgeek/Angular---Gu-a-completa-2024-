@@ -24,7 +24,8 @@ export class UserComponent {
   Un método es también utlilizado como una propiedad de la case dentro del componente.ts*/
 
   onSelectUser() {
-    console.log('Clicked!!');
+    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+    this.selectedUser = DUMMY_USERS[randomIndex];
   }
-  /* Método utilizado para ejecutaar una acción cuando se de click al botón en la plantilla HTML */
+  /* Método utilizado para ejecutar una acción cuando se de click al botón en la plantilla HTML */
 }
