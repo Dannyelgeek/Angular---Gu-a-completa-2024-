@@ -21,4 +21,9 @@ export class AppComponent {
   'bootstrapApplication()' del archivo 'main.ts' */
 
   users = DUMMY_USERS;
+
+  onSelectuser(id: string) {
+    console.log('Selected user with id: ' + id);
+  }
+  /* Este método espera obtener el 'id' de tipo 'string' de un usuario para mostrarlo en consola  */
 }

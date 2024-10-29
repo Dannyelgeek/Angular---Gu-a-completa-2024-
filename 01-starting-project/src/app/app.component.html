@@ -4,17 +4,41 @@
 <main>
   <ul id="users">
     <li>
-      <app-user [avatar]="users[0].avatar" [name]="users[0].name" />
+      <app-user
+        [id]="users[0].id"
+        [avatar]="users[0].avatar"
+        [name]="users[0].name"
+        (select)="onSelectuser($event)"
+      />
+      <!-- Aquí se usa el 'event binding' para escuchar el evento personalizado 'select' y manejarlo como
+        cualquier evento incorporado cuyo valor será el método 'onSelectUser()' pasando entre sus parentesis
+        la variable '$event' que obtiene el valor emitido por el 'user.component.ts' -->
+
       <!-- Etiqueta personalizada auto-cerrada del componente 'UserComponent' -->
     </li>
     <li>
-      <app-user [avatar]="users[1].avatar" [name]="users[1].name" />
+      <app-user
+        [id]="users[1].id"
+        [avatar]="users[1].avatar"
+        [name]="users[1].name"
+        (select)="onSelectuser($event)"
+      />
     </li>
     <li>
-      <app-user [avatar]="users[2].avatar" [name]="users[2].name" />
+      <app-user
+        [id]="users[2].id"
+        [avatar]="users[2].avatar"
+        [name]="users[2].name"
+        (select)="onSelectuser($event)"
+      />
     </li>
     <li>
-      <app-user [avatar]="users[3].avatar" [name]="users[3].name" />
+      <app-user
+        [id]="users[3].id"
+        [avatar]="users[3].avatar"
+        [name]="users[3].name"
+        (select)="onSelectuser($event)"
+      />
     </li>
   </ul>
 </main>

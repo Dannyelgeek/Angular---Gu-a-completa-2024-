@@ -1,4 +1,12 @@
-import { Component, computed, Input, signal, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  Input,
+  signal,
+  input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 /* import { DUMMY_USERS } from '../dummy-users'; */
 
 /*
@@ -46,7 +54,7 @@ export class UserComponent {
 
   @Input({ required: true }) avatar!: string;
 
-  /* El decoraador '@Input' indica que la propiedad 'avatar' será configurable desde el exterior, TypeScript pide
+  /* El decoraador '@Input()' indica que la propiedad 'avatar' será configurable desde el exterior, TypeScript pide
   a este tipo de propiedades que se le especifique explicitamente el tipo de dato se recibe, en este caso será un
   'string' y también se coloca el signo de exclamación '!' que indica que sabemos que esta propiedad
   definitivamente se establecerá en algún valor, aunque no pueda verlo en este código*/
@@ -78,9 +86,19 @@ export class UserComponent {
   imagePath = computed(() => 'assets/users/' + this.avatar());
   */
 
+  @Input({ required: true }) id!: string;
+  @Output() select = new EventEmitter();
+
+  /* El decorador '@Output()' y la instancia 'EventEmitter()' permite emitir valores persolanizados a treves de
+  la propiedad 'select' a cualquier componente padre que esté interesado */
+
   onSelectUser() {
     /* const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
     this.selectedUser.set(DUMMY_USERS[randomIndex]); */
+
+    this.select.emit(this.id);
+
+    /* El método 'emit()' permitira a la función 'onSelectUser()' emitir un nuevo valor */
   }
   /* Método utilizado para ejecutar una acción cuando se de click al botón en la plantilla HTML */
 }
