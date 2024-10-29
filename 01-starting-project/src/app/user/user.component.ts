@@ -44,12 +44,15 @@ export class UserComponent {
 
   Un método es también utlilizado como una propiedad de la case dentro del componente.ts*/
 
-  @Input() avatar!: string;
+  @Input({ required: true }) avatar!: string;
   /* El decoraador '@Input' indica que la propiedad 'avatar' será configurable desde el exterior, TypeScript pide
   a este tipo de propiedades que se le especifique explicitamente el tipo de dato se recibe, en este caso será un
-  'string' y también se coloca el símbolo de exclamación '!' que indica que sabemos que esta propiedad
+  'string' y también se coloca el signo de exclamación '!' que indica que sabemos que esta propiedad
   definitivamente se establecerá en algún valor, aunque no pueda verlo en este código */
-  @Input() name!: string;
+  @Input({ required: true }) name!: string;
+  /* Al usar la opción 'required: true' dentro de '@Input' le estas diciendo a Angular que esta propiedad debe ser
+  establecida, y eso toma sentido al usar el signo de exclamación para decirle a TypeScript que siempre se le
+  asignará un valor a la propiedad */
 
   get imagePath() {
     return 'assets/users/' + this.avatar;
