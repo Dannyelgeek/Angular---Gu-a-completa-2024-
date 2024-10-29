@@ -22,4 +22,9 @@ export class UserComponent {
   "'assets/users/' + selectedUser.avatar" para mantener la plantilla HTML lo más simple posible.
 
   Un método es también utlilizado como una propiedad de la case dentro del componente.ts*/
+
+  onSelectUser() {
+    console.log('Clicked!!');
+  }
+  /* Método utilizado para ejecutaar una acción cuando se de click al botón en la plantilla HTML */
 }
