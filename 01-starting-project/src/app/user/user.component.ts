@@ -6,6 +6,7 @@ import {
   input,
   Output,
   EventEmitter,
+  output,
 } from '@angular/core';
 /* import { DUMMY_USERS } from '../dummy-users'; */
 
@@ -60,6 +61,7 @@ export class UserComponent {
   definitivamente se establecerá en algún valor, aunque no pueda verlo en este código*/
 
   @Input({ required: true }) name!: string;
+  @Input({ required: true }) id!: string;
 
   /* Al usar la opción 'required: true' dentro de '@Input' le estas diciendo a Angular que esta propiedad debe ser
   establecida, y eso toma sentido al usar el signo de exclamación para decirle a TypeScript que siempre se le
@@ -86,11 +88,17 @@ export class UserComponent {
   imagePath = computed(() => 'assets/users/' + this.avatar());
   */
 
-  @Input({ required: true }) id!: string;
   @Output() select = new EventEmitter();
 
-  /* El decorador '@Output()' y la instancia 'EventEmitter()' permite emitir valores persolanizados a treves de
+  /*
+  El decorador '@Output()' y la instancia 'EventEmitter()' permite emitir valores persolanizados a treves de
   la propiedad 'select' a cualquier componente padre que esté interesado */
+
+  /*
+  select = output<string>()
+
+  La función 'output()' le dice a Angular que la propiedad 'select' debe ser una salida tal y como lo
+  hace el decorador '@Output()' y que debe almacenar un emisor de eventos  */
 
   onSelectUser() {
     /* const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
