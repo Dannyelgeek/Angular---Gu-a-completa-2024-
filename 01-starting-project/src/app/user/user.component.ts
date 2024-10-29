@@ -88,11 +88,12 @@ export class UserComponent {
   imagePath = computed(() => 'assets/users/' + this.avatar());
   */
 
-  @Output() select = new EventEmitter();
+  @Output() select = new EventEmitter<string>();
 
   /*
   El decorador '@Output()' y la instancia 'EventEmitter()' permite emitir valores persolanizados a treves de
-  la propiedad 'select' a cualquier componente padre que esté interesado */
+  la propiedad 'select' a cualquier componente padre que esté interesado, aquí también se puede usar el tipado
+  generico para decirle aTypeScript el tipo de dato que se piensa emitir */
 
   /*
   select = output<string>()
