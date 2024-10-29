@@ -1,4 +1,4 @@
-import { Component, computed, Input, signal } from '@angular/core';
+import { Component, computed, Input, signal, input } from '@angular/core';
 /* import { DUMMY_USERS } from '../dummy-users'; */
 
 /*
@@ -45,11 +45,14 @@ export class UserComponent {
   Un método es también utlilizado como una propiedad de la case dentro del componente.ts*/
 
   @Input({ required: true }) avatar!: string;
+
   /* El decoraador '@Input' indica que la propiedad 'avatar' será configurable desde el exterior, TypeScript pide
   a este tipo de propiedades que se le especifique explicitamente el tipo de dato se recibe, en este caso será un
   'string' y también se coloca el signo de exclamación '!' que indica que sabemos que esta propiedad
-  definitivamente se establecerá en algún valor, aunque no pueda verlo en este código */
+  definitivamente se establecerá en algún valor, aunque no pueda verlo en este código*/
+
   @Input({ required: true }) name!: string;
+
   /* Al usar la opción 'required: true' dentro de '@Input' le estas diciendo a Angular que esta propiedad debe ser
   establecida, y eso toma sentido al usar el signo de exclamación para decirle a TypeScript que siempre se le
   asignará un valor a la propiedad */
@@ -57,6 +60,23 @@ export class UserComponent {
   get imagePath() {
     return 'assets/users/' + this.avatar;
   }
+
+  /*
+  avatar = input.required<string>();
+
+  name = input.required<string>();
+
+  Esta función 'input()' es diferente al decorador '@Input' y le dice a Angular que la propiedad 'avatar' dece ser
+  una entrada a este componente para que se esablezca como un atributo cuando se utiliza ese componente, también
+  permite asignar un valor por defecto que se asumirá ai aun no se ha recibido ningún valor de entrada, por ejemplo,
+  una cadena vacía ('')
+
+  Alternativamente tambien puede no pasarse un valor inicial y decirle a Angular que eventualmente se recibirá un
+  valor de un tipo diferente mediante parentesis angulares (<>, a esto se le llama 'tipo generico') despues de el
+  nombre de la función y antes de las parentesis normales
+
+  imagePath = computed(() => 'assets/users/' + this.avatar());
+  */
 
   onSelectUser() {
     /* const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
