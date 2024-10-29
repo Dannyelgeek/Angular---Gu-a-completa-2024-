@@ -11,7 +11,7 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  selecteduser = DUMMY_USERS[randomIndex];
+  selectedUser = DUMMY_USERS[randomIndex];
   /* En el cuerpo de una clase en TypeScript se pueden establecer propiedades sin usar 'let' o 'const' como se hace en
   JavaScript, esta propiedad puede ser usada dentro de la plantilla HTML de este componente. */
 }

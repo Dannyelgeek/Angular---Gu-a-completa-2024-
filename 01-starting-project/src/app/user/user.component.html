@@ -1,6 +1,12 @@
 <div>
   <button>
     <img />
-    <span>NAME</span>
+    <span>{{ selectedUser.name }}</span>
+    <!-- La interpolación de cadena se usa para vincular una propiedad de la clase del componente.ts, en este
+     caso se está vinculando la propiedad 'selectedUser', esta vinculación utiliza dos llaves de apertura y
+     cierre para hacer referencia a cualquier propiedad de la clase del componente.ts
+
+     La notación de punto se usa seguido de la propiedad para traer un valor especifico en caso de que dicha
+     propiedad sea un objeto, en este caso trayendo el valor de 'name' y mostrándolo en la etiqueta 'span' -->
   </button>
 </div>
