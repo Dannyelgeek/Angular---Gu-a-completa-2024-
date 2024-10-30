@@ -15,6 +15,25 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
 Esta constante obtiene un número aleatorio basado en la cantidad de usuarios en el array 'DUMMY_USERS'. */
 
+/*
+type User = {
+  id: string;
+  name: string;
+  avatar: string;
+}
+
+La palabra clave 'type' es usada para crear tipos basándose en objetos, para nombrar un nuevo tipo se escribir
+la primera letra en mayúscula */
+
+interface User {
+  id: string;
+  name: string;
+  avatar: string;
+}
+
+/* 'interface' es una caracterisctica de TypeScript que de igual manera que la palabra clave 'type' sirve para
+definir un tipo de objeto, a diferencia de 'type' una interfaz no necesita del signo igual '=' para ser definida */
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -69,16 +88,23 @@ export class UserComponent {
   establecida, y eso toma sentido al usar el signo de exclamación para decirle a TypeScript que siempre se le
   asignará un valor a la propiedad */
 
+  /*
   @Input({ required: true }) user!: {
     id: string;
     name: string;
     avatar: string;
   };
 
-  /* Para simplificar el código se puede configurar una sola propiedad de entrada 'user' con un tipado complejo
+  Para simplificar el código se puede configurar una sola propiedad de entrada 'user' con un tipado complejo
   usando un objeto con múltiples propiedades donde todas esas propiedades tambien tienen diferentes tipos de valores,
   a esto se le denomina un 'tipo de objeto' utilizando las llaves '{}' tal como si se creara un ojeto literal,
-  esto no quiere decir que se está creando un objeto sino que se esta creando un tipo con proiedades específicas */
+  esto no quiere decir que se está creando un objeto sino que se esta creando un tipo con proiedades específicas. */
+
+  @Input({ required: true }) user!: User;
+
+  /* Aunque lo más común es exteriorizar el 'tipo de objeto' ya sea usando las palabras clave 'type' o 'interface'
+ para que el código sea más simple aún, y el tipado solo sea llamar al propio tipo creado fuera de la clase,
+ usando su nombre 'User' */
 
   get imagePath() {
     return 'assets/users/' + this.user.avatar;
