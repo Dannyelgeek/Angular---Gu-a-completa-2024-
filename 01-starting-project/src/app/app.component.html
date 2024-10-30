@@ -3,23 +3,24 @@
 
 <main>
   <ul id="users">
+    @for (user of users; track user.id) {
+    <!-- El iterador '@for()' permite denderizar dinámicamente la lista 'users' del componente.ts para facilitar
+       la visualización de cada '<li>' y no tener que escribirlos manualmente, la palabra clave 'track'
+        es usada por Angular para hacer un seguimiento de cada elemento que se está representando de manera
+        que si los datos de entrada de la lista cambiarían, si nos gustaría barajar los elementos de la lista
+        alrededor o eliminar algunos elementos, Angular podría facilmente reutilizar los elementos de la lista
+        ya representados y no tiene que volver a crear toda la lista cada vez que los datos de la lista cambien -->
     <li>
-      <app-user [user]="users[0]" (select)="onSelectuser($event)" />
+      <app-user [user]="user" (select)="onSelectuser($event)" />
+
       <!-- Aquí se usa el 'event binding' para escuchar el evento personalizado 'select' y manejarlo como
         cualquier evento incorporado cuyo valor será el método 'onSelectUser()' pasando entre sus parentesis
         la variable '$event' que obtiene el valor emitido por el 'user.component.ts' -->
 
       <!-- Etiqueta personalizada auto-cerrada del componente 'UserComponent' -->
     </li>
-    <li>
-      <app-user [user]="users[1]" (select)="onSelectuser($event)" />
-    </li>
-    <li>
-      <app-user [user]="users[2]" (select)="onSelectuser($event)" />
-    </li>
-    <li>
-      <app-user [user]="users[3]" (select)="onSelectuser($event)" />
-    </li>
+
+    }
   </ul>
 
   <app-tasks [name]="selectedUser ? selectedUser.name : ''" />
