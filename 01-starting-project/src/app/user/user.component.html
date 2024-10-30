@@ -6,11 +6,11 @@
      click al botón.
 
      El comando 'CTRL + SPACE' puede abrir sugerengias sobre los 'event listeners' que se quieran utilizar -->
-    <img [src]="imagePath" [alt]="name" />
+    <img [src]="imagePath" [alt]="user.name" />
     <!-- La vinculación por propiedad se utiliza para configurar un elemento a través de sus atributos, para ello
      se encierra el nombre del atributo a vincular con corchetes, seguido de una ruta dinámica indicando la carpeta
      'assets/users/' seguido de la propiedad de la clase del componente.ts que se quiere utilizar -->
-    <span>{{ name }}</span>
+    <span>{{ user.name }}</span>
     <!-- La interpolación de cadena se usa para vincular una propiedad de la clase del componente.ts, en este
      caso se está vinculando la propiedad 'selectedUser', esta vinculación utiliza dos llaves de apertura y
      cierre para hacer referencia a cualquier propiedad de la clase del componente.ts

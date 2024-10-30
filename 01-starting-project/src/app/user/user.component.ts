@@ -53,22 +53,35 @@ export class UserComponent {
 
   Un método es también utlilizado como una propiedad de la case dentro del componente.ts*/
 
+  /*
   @Input({ required: true }) avatar!: string;
 
-  /* El decoraador '@Input()' indica que la propiedad 'avatar' será configurable desde el exterior, TypeScript pide
+  El decoraador '@Input()' indica que la propiedad 'avatar' será configurable desde el exterior, TypeScript pide
   a este tipo de propiedades que se le especifique explicitamente el tipo de dato se recibe, en este caso será un
   'string' y también se coloca el signo de exclamación '!' que indica que sabemos que esta propiedad
   definitivamente se establecerá en algún valor, aunque no pueda verlo en este código*/
 
+  /*
   @Input({ required: true }) name!: string;
   @Input({ required: true }) id!: string;
 
-  /* Al usar la opción 'required: true' dentro de '@Input' le estas diciendo a Angular que esta propiedad debe ser
+  Al usar la opción 'required: true' dentro de '@Input' le estas diciendo a Angular que esta propiedad debe ser
   establecida, y eso toma sentido al usar el signo de exclamación para decirle a TypeScript que siempre se le
   asignará un valor a la propiedad */
 
+  @Input({ required: true }) user!: {
+    id: string;
+    name: string;
+    avatar: string;
+  };
+
+  /* Para simplificar el código se puede configurar una sola propiedad de entrada 'user' con un tipado complejo
+  usando un objeto con múltiples propiedades donde todas esas propiedades tambien tienen diferentes tipos de valores,
+  a esto se le denomina un 'tipo de objeto' utilizando las llaves '{}' tal como si se creara un ojeto literal,
+  esto no quiere decir que se está creando un objeto sino que se esta creando un tipo con proiedades específicas */
+
   get imagePath() {
-    return 'assets/users/' + this.avatar;
+    return 'assets/users/' + this.user.avatar;
   }
 
   /*
@@ -105,7 +118,7 @@ export class UserComponent {
     /* const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
     this.selectedUser.set(DUMMY_USERS[randomIndex]); */
 
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
 
     /* El método 'emit()' permitira a la función 'onSelectUser()' emitir un nuevo valor */
   }
