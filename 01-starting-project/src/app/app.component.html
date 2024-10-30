@@ -42,5 +42,7 @@
     </li>
   </ul>
 
-  <app-tasks [name]="selectedUser.name" />
+  <app-tasks [name]="selectedUser ? selectedUser.name : ''" />
+  <!-- El signo de interrogación '?' se usa en la sintaxis de JavaScript para decir que si 'selectedUser' está
+   definido, podrá acceder a 'name', si no lo está simplemente utilice una cadena vacía como valor de reserva -->
 </main>
