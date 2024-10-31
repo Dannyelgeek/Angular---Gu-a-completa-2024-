@@ -23,7 +23,20 @@
     }
   </ul>
 
-  <app-tasks [name]="selectedUser ? selectedUser.name : ''" />
-  <!-- El signo de interrogación '?' se usa en la sintaxis de JavaScript para decir que si 'selectedUser' está
-   definido, podrá acceder a 'name', si no lo está simplemente utilice una cadena vacía como valor de reserva -->
+  @if (selectedUser) {
+  <!-- '@if()' es usado en Angular para mostrar contenido condicional, dentro de las parentesis irá la condición
+    que se quiere comprobar, en este caso, si 'selectedUser' existe, entonces se mostrará la etiqueta 'app-tasks' -->
+
+  <app-tasks [name]="selectedUser.name" />
+  <!--
+  app-tasks [name]="selectedUser ? selectedUser.name : ''
+
+  El signo de interrogación '?' se usa en la sintaxis de JavaScript para decir que si 'selectedUser' está
+  definido, podrá acceder a 'name', si no lo está simplemente utilice una cadena vacía como valor de reserva -->
+  } @else {
+  <p id="fallback">Select a user for see their tasks!</p>
+  <!-- Si la condición en el '@if' no se cumple, Angular tambien permite manejar alternativas con '@else',
+    en este caso si la condición no se cumple, se mostrará un párrafo indicando que seleccione un usuario
+    para ver sus tareas -->
+  }
 </main>

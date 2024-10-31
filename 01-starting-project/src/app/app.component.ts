@@ -22,7 +22,7 @@ export class AppComponent {
   'bootstrapApplication()' del archivo 'main.ts' */
 
   users = DUMMY_USERS;
-  selecteUserId = 'u1';
+  selecteUserId?: string;
 
   get selectedUser() {
     return this.users.find((user) => user.id === this.selecteUserId)!;
