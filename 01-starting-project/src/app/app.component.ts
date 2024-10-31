@@ -22,14 +22,14 @@ export class AppComponent {
   'bootstrapApplication()' del archivo 'main.ts' */
 
   users = DUMMY_USERS;
-  selecteUserId?: string;
+  selectedUserId?: string;
 
   get selectedUser() {
-    return this.users.find((user) => user.id === this.selecteUserId)!;
+    return this.users.find((user) => user.id === this.selectedUserId)!;
   }
 
   onSelectuser(id: string) {
-    this.selecteUserId = id;
+    this.selectedUserId = id;
   }
   /* Este método espera obtener el 'id' de tipo 'string' de un usuario para mostrarlo en consola  */
 }

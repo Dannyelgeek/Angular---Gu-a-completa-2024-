@@ -36,7 +36,7 @@
   '@if()' es usado en Angular para mostrar contenido condicional, dentro de las parentesis irá la condición
     que se quiere comprobar, en este caso, si 'selectedUser' existe, entonces se mostrará la etiqueta 'app-tasks' -->
 
-  <app-tasks [name]="selectedUser!.name" />
+  <app-tasks [name]="selectedUser!.name" [userId]="selectedUser!.id" />
   <!-- '*ngIf="selectedUser; else fallback"'
 
   '*ng-if' era el condicional que usaba Angular hasta su versión 17, después fué reemplazada por
