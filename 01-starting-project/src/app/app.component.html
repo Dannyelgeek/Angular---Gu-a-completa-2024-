@@ -4,13 +4,20 @@
 <main>
   <ul id="users">
     @for (user of users; track user.id) {
-    <!-- El iterador '@for()' permite denderizar dinámicamente la lista 'users' del componente.ts para facilitar
+    <!--
+
+    El iterador '@for()' permite denderizar dinámicamente la lista 'users' del componente.ts para facilitar
        la visualización de cada '<li>' y no tener que escribirlos manualmente, la palabra clave 'track'
         es usada por Angular para hacer un seguimiento de cada elemento que se está representando de manera
         que si los datos de entrada de la lista cambiarían, si nos gustaría barajar los elementos de la lista
         alrededor o eliminar algunos elementos, Angular podría facilmente reutilizar los elementos de la lista
         ya representados y no tiene que volver a crear toda la lista cada vez que los datos de la lista cambien -->
     <li>
+      <!-- '*ngFor="let user of users"'
+
+      '*ng-for' era el método de iteración que usaba Angular hasta su versión 17, después fué reemplazada por
+       '@for()', pero su uso es muy parecido, al ser una directiva estructural, se debe ir al decorador '@Component'
+       del componente donde se quiere usar y añadirla en el array 'imports'  -->
       <app-user [user]="user" (select)="onSelectuser($event)" />
 
       <!-- Aquí se usa el 'event binding' para escuchar el evento personalizado 'select' y manejarlo como
@@ -19,24 +26,37 @@
 
       <!-- Etiqueta personalizada auto-cerrada del componente 'UserComponent' -->
     </li>
-
     }
   </ul>
 
   @if (selectedUser) {
-  <!-- '@if()' es usado en Angular para mostrar contenido condicional, dentro de las parentesis irá la condición
+  <!--
+
+  '@if()' es usado en Angular para mostrar contenido condicional, dentro de las parentesis irá la condición
     que se quiere comprobar, en este caso, si 'selectedUser' existe, entonces se mostrará la etiqueta 'app-tasks' -->
 
-  <app-tasks [name]="selectedUser.name" />
+  <app-tasks [name]="selectedUser!.name" />
+  <!-- '*ngIf="selectedUser; else fallback"'
+
+  '*ng-if' era el condicional que usaba Angular hasta su versión 17, después fué reemplazada por
+       '@if()', pero su uso es muy parecido, al ser una directiva estructural, se debe ir al decorador '@Component'
+       del componente donde se quiere usar y añadirla en el array 'imports'  -->
+
   <!--
   app-tasks [name]="selectedUser ? selectedUser.name : ''
 
   El signo de interrogación '?' se usa en la sintaxis de JavaScript para decir que si 'selectedUser' está
   definido, podrá acceder a 'name', si no lo está simplemente utilice una cadena vacía como valor de reserva -->
+
+  <!-- En el caso de que la condición del '*ng-if' no se cumpla, la sintaxis para manejar otras alternativas
+  es un poco más compleja, se tiene que añadir el elemento 'ng-template' con  un '#' y el nombre que elijas para
+  identificar al elemento, envolver dentro la alternativa que se quiere mostrar, y seguido de la validación del
+  '*ng-if' colocal un punto y coma ';' y el nombre que identifica al alemento sin el '#' -->
+
   } @else {
   <p id="fallback">Select a user for see their tasks!</p>
+  }
   <!-- Si la condición en el '@if' no se cumple, Angular tambien permite manejar alternativas con '@else',
     en este caso si la condición no se cumple, se mostrará un párrafo indicando que seleccione un usuario
     para ver sus tareas -->
-  }
 </main>
