@@ -8,31 +8,13 @@ import {
   EventEmitter,
   output,
 } from '@angular/core';
+import { type User } from './user.model';
 /* import { DUMMY_USERS } from '../dummy-users'; */
 
 /*
 const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
 Esta constante obtiene un número aleatorio basado en la cantidad de usuarios en el array 'DUMMY_USERS'. */
-
-/*
-type User = {
-  id: string;
-  name: string;
-  avatar: string;
-}
-
-La palabra clave 'type' es usada para crear tipos basándose en objetos, para nombrar un nuevo tipo se escribir
-la primera letra en mayúscula */
-
-interface User {
-  id: string;
-  name: string;
-  avatar: string;
-}
-
-/* 'interface' es una caracterisctica de TypeScript que de igual manera que la palabra clave 'type' sirve para
-definir un tipo de objeto, a diferencia de 'type' una interfaz no necesita del signo igual '=' para ser definida */
 
 @Component({
   selector: 'app-user',
