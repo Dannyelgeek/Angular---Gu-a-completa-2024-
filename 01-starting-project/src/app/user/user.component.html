@@ -1,13 +1,18 @@
 <div>
-  <button (click)="onSelectUser()">
+  <button [class.active]="selected" (click)="onSelectUser()">
     <!-- Los 'event listeners' se usan para ecuchar las entradas del usuario para poder usar la interfaz del usuario
      en función de ciertos tipos de entradas, en este caso se quiere ecuchar el evento click del botón de
      arriba para lo cual se encierra entre parentesis seguido del código que se quiere ejecutar cuando se dé
      click al botón.
 
-     El comando 'CTRL + SPACE' puede abrir sugerengias sobre los 'event listeners' que se quieran utilizar -->
+     El comando 'CTRL + SPACE' puede abrir sugerengias sobre los 'event listeners' que se quieran utilizar.
+
+    Para aladir condicionalmente una clase a un elemento se tiene que usar una sintaxis especial de
+    'property binding', primero se encierra la palabra clave 'class' entre corchetes seguido de un punto, después
+    el nombre de la clase que se quiere condicionar, en este caso '.active' y después del signo igual '=' debe ir
+    la propiedad booleana 'true o false' que determina si esta clase se añadirán en este caso es 'selected' -->
     <img [src]="imagePath" [alt]="user.name" />
-    <!-- La vinculación por propiedad se utiliza para configurar un elemento a través de sus atributos, para ello
+    <!-- La 'property binding' se utiliza para configurar un elemento a través de sus atributos, para ello
      se encierra el nombre del atributo a vincular con corchetes, seguido de una ruta dinámica indicando la carpeta
      'assets/users/' seguido de la propiedad de la clase del componente.ts que se quiere utilizar -->
     <span>{{ user.name }}</span>

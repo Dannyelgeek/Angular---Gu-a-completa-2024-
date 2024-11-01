@@ -19,7 +19,11 @@
        '@for()', pero su uso es muy parecido, al ser una directiva estructural, se debe ir al decorador '@Component'
        del componente donde se quiere usar y añadirla en el array 'imports'  -->
 
-      <app-user [user]="user" (select)="onSelectuser($event)" />
+      <app-user
+        [user]="user"
+        [selected]="user.id === selectedUserId"
+        (select)="onSelectuser($event)"
+      />
 
       <!-- Aquí se usa el 'event binding' para escuchar el evento personalizado 'select' y manejarlo como
         cualquier evento incorporado cuyo valor será el método 'onSelectUser()' pasando entre sus parentesis
