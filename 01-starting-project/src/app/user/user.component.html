@@ -1,4 +1,4 @@
-<div>
+<app-card>
   <button [class.active]="selected" (click)="onSelectUser()">
     <!-- Los 'event listeners' se usan para ecuchar las entradas del usuario para poder usar la interfaz del usuario
      en función de ciertos tipos de entradas, en este caso se quiere ecuchar el evento click del botón de
@@ -23,4 +23,4 @@
      La notación de punto se usa seguido de la propiedad para traer un valor especifico en caso de que dicha
      propiedad sea un objeto, en este caso trayendo el valor de 'name' y mostrándolo en la etiqueta 'span' -->
   </button>
-</div>
+</app-card>
