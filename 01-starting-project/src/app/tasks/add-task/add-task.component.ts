@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { type NewTaskData } from './add-new-task.model';
 
 @Component({
   selector: 'app-add-task',
@@ -19,7 +20,20 @@ export class AddTaskComponent {
   enteredSumary = '';
   enteredDate = '';
 
+  @Output() add = new EventEmitter<NewTaskData>();
+
   onCancel() {
     this.cancel.emit();
   }
+
+  onSubmit() {
+    this.add.emit({
+      title: this.enteredTitle,
+      summary: this.enteredSumary,
+      date: this.enteredDate,
+    });
+  }
+
+  /* método que se vincula con el evento 'ngSubmit' y utiliza las propiedades del formulario para construir una nueva
+  tarea */
 }
