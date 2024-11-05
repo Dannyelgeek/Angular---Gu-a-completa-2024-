@@ -34,6 +34,20 @@ export class TasksService {
     },
   ];
 
+  constructor() {
+    const tasks = localStorage.getItem('tasks');
+
+    if (tasks) {
+      this.tasks = JSON.parse(tasks);
+    }
+  }
+
+  /* Para que el array 'tasks' sea más persistente y no se reinicie cada que actualicemos la página, se puede
+  almacenar en el 'local storage' del navegador, para ello primero hacemos uso de la función 'constructor()',
+  luego definimos una constante 'tasks' cuyo valor será la función 'getItem()' que toma un valor del 'localStorage'
+  y lo almacena dentro de una llave llamada 'tasks'
+   */
+
   getUserTasks(userId: string) {
     return this.tasks.filter((task) => task.userId === userId);
   }
@@ -47,11 +61,18 @@ export class TasksService {
       summary: taskData.summary,
       dueDate: taskData.date,
     });
+
+    this.saveTasks();
   }
   /* Este método se usará fuera del servicio para añadir tareas de los usuarios al array 'tasks' */
 
   deleteTasks(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
+    this.saveTasks();
   }
   /* Este método se usará fuera del servicio para eliminar tareas de los usuarios del array 'tasks' */
+
+  private saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  }
 }
