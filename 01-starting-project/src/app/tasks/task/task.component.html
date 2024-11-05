@@ -1,7 +1,13 @@
 <app-card>
   <article>
     <h2>{{ task.title }}</h2>
-    <time>{{ task.dueDate }}</time>
+    <time>{{ task.dueDate | date : "fullDate" }}</time>
+    <!-- Una 'Pipe' se usa para transformar la salida de una 'string interpolation' y que se vea en la página
+     de una manera diferente, una 'Pipe' utiliza el signo de tubería '|' seguido de una palabra clave
+     (definida por Angular o personalizada) que es el formato que adoptará la salida de la 'string interpoletion'
+     como en este caso, se usa 'date', para poder usarlo se tiene que importar 'DatePipe' en el componente.ts, para
+     configurar una 'Pipe' se debe escribir dos puntos ':' después de su nombre y escribir un parametro aceptado
+     por la 'Pipe' tal como es el caso de 'fullDate' -->
     <p>{{ task.summary }}</p>
     <p class="actions">
       <button (click)="onCompleteTask()">Complete</button>
