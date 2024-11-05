@@ -40,7 +40,7 @@ export class TasksService {
   /* Este método se usará fuera del servicio para obtener las tareas de los usuarios */
 
   addTask(taskData: NewTaskData, userId: string) {
-    this.tasks.push({
+    this.tasks.unshift({
       id: new Date().getDate().toString(),
       userId: userId,
       title: taskData.title,
