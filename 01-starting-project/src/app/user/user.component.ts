@@ -19,8 +19,8 @@ Esta constante obtiene un número aleatorio basado en la cantidad de usuarios en
 
 @Component({
   selector: 'app-user',
-  standalone: true,
-  imports: [CardComponent],
+  standalone: false,
+  // imports: [CardComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })

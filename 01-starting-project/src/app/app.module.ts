@@ -2,18 +2,31 @@
 se exporta y se identifica con el decorador '@NgModule' */
 
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { TasksComponent } from './tasks/tasks.component';
-import { BrowserModule } from '@angular/platform-browser';
+import { AddTaskComponent } from './tasks/add-task/add-task.component';
+import { CardComponent } from './shared/card/card.component';
+import { TaskComponent } from './tasks/task/task.component';
 /* El módulo 'BrowserModule' proporciona una colección de cosas que son necesarias para que cada aplicación
 de Angular funcione correctamente, y debe ser importado en el módulo raíz que en este caso es 'AppModule' */
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AddTaskComponent,
+    AppComponent,
+    CardComponent,
+    HeaderComponent,
+    TasksComponent,
+    TaskComponent,
+    UserComponent,
+  ],
   bootstrap: [AppComponent],
-  imports: [HeaderComponent, UserComponent, TasksComponent, BrowserModule],
+  imports: [BrowserModule, FormsModule],
 })
 
 /* Este decorador tiene un objeto de configuración que establece 'declarations' que es donde se registran los

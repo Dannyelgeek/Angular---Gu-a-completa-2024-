@@ -5,8 +5,8 @@ import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-add-task',
-  standalone: true,
-  imports: [FormsModule],
+  standalone: false,
+  // imports: [FormsModule],
   /* Se importa el módulo 'FormsModule' para poder registrar el uso de la directiva '[(ng-model)]=""' */
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css',
