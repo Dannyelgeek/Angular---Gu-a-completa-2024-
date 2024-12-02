@@ -10,8 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { AddTaskComponent } from './tasks/add-task/add-task.component';
-import { CardComponent } from './shared/card/card.component';
 import { TaskComponent } from './tasks/task/task.component';
+import { SharedModule } from './shared/shared.module';
 /* El módulo 'BrowserModule' proporciona una colección de cosas que son necesarias para que cada aplicación
 de Angular funcione correctamente, y debe ser importado en el módulo raíz que en este caso es 'AppModule' */
 
@@ -19,14 +19,13 @@ de Angular funcione correctamente, y debe ser importado en el módulo raíz que 
   declarations: [
     AddTaskComponent,
     AppComponent,
-    CardComponent,
     HeaderComponent,
     TasksComponent,
     TaskComponent,
     UserComponent,
   ],
   bootstrap: [AppComponent],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, SharedModule],
 })
 
 /* Este decorador tiene un objeto de configuración que establece 'declarations' que es donde se registran los
